@@ -1,0 +1,108 @@
+#!/bin/sh
+###############################################################################
+#  
+# Copyright (c) 2017, Broadband Forum
+# Copyright (c) 2016, Marvell International Ltd. and its affiliates
+# 
+# This is draft software, is subject to change, and has not been
+# approved by members of the Broadband Forum. It is made available to
+# non-members for internal study purposes only. For such study
+# purposes, you have the right to make copies and modifications only
+# for distributing this software internally within your organization
+# among those who are working on it (redistribution outside of your
+# organization for other than study purposes of the original or
+# modified works is not permitted). For the avoidance of doubt, no
+# patent rights are conferred by this license.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+# COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+# ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+# 
+# Unless a different date is specified upon issuance of a draft
+# software release, all member and non-member license rights under the
+# draft software release will expire on the earliest to occur of (i)
+# nine months from the date of issuance, (ii) the issuance of another
+# version of the same software release, or (iii) the adoption of the
+# draft software release as final.
+# 
+# ---
+# 
+# This version of this source file is part of the Broadband Forum
+# WT-382 IEEE 1905.1/1a stack project.
+# 
+# Please follow the release link (given below) for further details
+# of the release, e.g. license validity dates and availability of
+# more recent draft or final releases.
+# 
+# Release name: WT-382_draft1
+# Release link: https://www.broadband-forum.org/software#WT-382_draft1
+
+##############################################################################
+#
+# Description: This script is in charge of modifying the default behavior of
+#              the WPS hardware button in a Linksys 1900 AC device, running
+#              OpenWRT.
+#
+#              This script must be copied in the /etc/rc.button directory.
+#
+#              The WPS button will be reconfigured to execute two actions:
+#
+#                1) If the button is pressed less than 1 second, it will
+#                   toggle the WIFI 'radio 1' to ON or OFF, depending of its
+#                   previous state.
+#                   This is useful to switch ON or OFF the WIFI without
+#                   entering in the Web configuration page.
+#
+#                2) If the button is pressed more than 3 seconds, it will
+#                   start the 1905 Push Button procedure.
+#                   Depending on the configuration, this procedure will secure
+#                   all device interfaces, and clone the WIFI configuration 
+#                   from another device.
+#                   For more information about the Push Button procedure,
+#                   please read the README file provided with the 1905 stack
+#                   implementation.
+#
+###############################################################################
+
+[ "${ACTION}" = "released" ] || exit 0
+
+. /lib/functions.sh
+
+logger "$BUTTON pressed for $SEEN seconds..."
+
+if [ "$SEEN" -lt 1 ]
+then
+  device="radio1"
+  case $(uci get wireless.$device.txpower) in
+   10)
+        #wifi down $device
+        #uci set wireless.$device.disabled=1
+        uci set wireless.$device.txpower=0
+        wifi
+        logger "Wifi $device disabled"
+    ;;
+    0)
+       # uci set wireless.$device.disabled=0
+       # wifi up $device
+        uci set wireless.$device.txpower=10 
+        wifi 
+        logger "Wifi $device enabled"
+    ;;
+  esac
+elif [ "$SEEN" -gt 3 ]
+then
+    touch /tmp/virtual_push_button
+    logger "Starting 1905 PUSH BUTTON procedure"
+fi
+
+return 0
+
