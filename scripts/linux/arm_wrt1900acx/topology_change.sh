@@ -2,7 +2,7 @@
 ###############################################################################
 #  
 # Copyright (c) 2017, Broadband Forum
-# Copyright (c) 2016, Marvell International Ltd. and its affiliates
+# Copyright (c) 2017, MaxLinear, Inc. and its affiliates
 # 
 # This is draft software, is subject to change, and has not been
 # approved by members of the Broadband Forum. It is made available to
