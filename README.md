@@ -2041,6 +2041,8 @@ like to automate them.
 
        $ al_entity -m aa:aa:aa:aa:aa:00 -i eth1:simulated:interface.eth1.sim,eth0:simulated:interface.eth0.sim -v
      ```
+		 notes: Make sure the attr.mq_maxmsg is less than /proc/sys/fs/mqueue/msg_max or using root to run above command.
+		 
   2. Wait a few seconds, open a new terminal and execute this:
      ```
 
