@@ -645,7 +645,7 @@ of:
 
   1. The **"virtual push button" trigger** is a file named
      **"/tmp/virtual_push_button"**. Whenever you "touch" this file (ex:
-     ```touch /tmp/virtual_push_button```), the AL entity will act as if the
+     `touch /tmp/virtual_push_button`), the AL entity will act as if the
      physical button that starts the "push button configuration method" had been
      pressed.
      The code for each Linux flavour also includes the "glue" needed to start
@@ -654,7 +654,7 @@ of:
 
   2. The **"topology change notification" trigger** is a file named
      **"/tmp/topology_change"**. Whenever you "touch" this file (ex:
-     ```touch /tmp/topology_change```), the AL entity will act as if a real
+     `touch /tmp/topology_change`), the AL entity will act as if a real
      topology change had been detected.
      Right now this is the only way to "detect" topology changes (i.e. you must
      "manually" force them). In the future the code will listen to both changes
