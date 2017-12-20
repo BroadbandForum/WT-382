@@ -1512,6 +1512,7 @@ INT8U start1905AL(INT8U *al_mac_address, INT8U map_whole_network_flag, char *reg
                     {
                         PLATFORM_PRINTF_DEBUG_WARNING("Could not retrieve info of interface %s\n", ifs_names[i]);
                         break;
+                        // todo why not continue???
                     }
                     else
                     {
