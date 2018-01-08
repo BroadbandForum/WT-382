@@ -58,9 +58,10 @@
 ifndef PLATFORM
 
 PLATFORM := linux
- FLAVOUR  := x86_generic
+ #FLAVOUR  := x86_generic
  #FLAVOUR  := arm_wrt1900acx
  #FLAVOUR  := x86_windows_mingw
+ FLAVOUR  := mips
 
 endif
 
@@ -105,11 +106,28 @@ ifeq ($(PLATFORM),linux)
 
         AL_SUPPORTED  := no
         HLE_SUPPORTED := yes
+    else ifeq ($(FLAVOUR), mips)
+        CC        := $(CROSS_COMPILE)gcc
+        LD        := $(CROSS_COMPILE)ld
+        AR        := $(CROSS_COMPILE)ar
+        
+        CCFLAGS   += -D_FLAVOUR_MIPS_
+        CCFLAGS   += -I$(shell pwd)/../libpcap/libpcap-1.8.1/
+        CCFLAGS   += -I$(shell pwd)/../openssl-1.0.2d/include/
+
+        LDFLAGS       += -lrt -lpthread
+        LDFLAGS       += -L$(shell pwd)/../openssl-1.0.2d/
+        LDFLAGS       += -L$(shell pwd)/../libpcap/libpcap-1.8.1/
+        LDFLAGS       += -lpcap           # For packet capture
+        LDFLAGS       += -lcrypto         # For WPS crypto
+        
+        AL_SUPPORTED  := yes
+        HLE_SUPPORTED := yes
     else
         $(error "Linux FLAVOUR unknown")
     endif
 
-    CCFLAGS       += -g -O0 -Wall -Werror #-Wextra
+    CCFLAGS       += -g -O0 -Wall #-Wextra
     CCFLAGS       += -D_HOST_IS_LITTLE_ENDIAN_=1 -DMAX_NETWORK_SEGMENT_SIZE=1500
     CCFLAGS       += -DINT8U="unsigned char"
     CCFLAGS       += -DINT16U="unsigned short int"
@@ -229,3 +247,9 @@ static-analysis: clean
 .PHONY: update-license
 update-license:
 	add-license.py --exclude=version.txt --separator=---
+
+.PHONY: romfs
+romfs:
+	$(ROMFSINST) ./output/al_entity /bin/al_entity
+	$(ROMFSINST) ./output/hle_entity /bin/hle_entity
+	$(ROMFSINST) ./scripts/linux/realtek/upload_bin /bin/upload_bin
