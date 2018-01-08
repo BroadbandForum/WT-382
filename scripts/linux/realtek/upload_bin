@@ -1,0 +1,44 @@
+#!/bin/sh
+# Author: Zhang LongQi
+# Description: This script is used to upload executable file from host machine to the board 
+#              and add executable permission to the file. It will delete the file first if it already exist.
+#
+YELLOW='\033[1;33m'
+Light_Purple='\033[1;35m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+####################### Deal with argument #####################################
+if [ $# -eq 0 ] ;then
+		echo -e "No arguments supplied. We will use default argument instead: $Light_Purple a.out$NC"
+fi
+
+host_ip=192.168.1.10
+
+if [ -z "$1" ] ; then
+		file=a.out
+else
+		file=$1
+fi
+
+######################### Remove existing one ###################################
+if [ -f $file ]; then 
+		echo -e $Light_Purple Remove existing file: $RED $file $NC
+		rm $file
+fi
+
+########################## Downloading ##################################
+echo -e "Getting file $Light_Purple $file $NC from host $Light_Purple $host_ip $NC"
+URL=http://$host_ip:8000/$file
+wget -T 1 -t 1 $URL
+if [ $? -ne 0 ]; then
+		echo -e $RED Download failed: $URL $NC
+		exit 1
+fi
+
+########################## Add execution permission ##################################
+chmod +x $file
+if [ $? -ne 0 ]; then
+		echo -e Adding execution permission failed: $file
+		exit 1
+fi
