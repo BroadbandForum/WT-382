@@ -1041,6 +1041,7 @@ INT8U PLATFORM_REGISTER_QUEUE_EVENT(INT8U queue_id, INT8U event_type, void *data
             {
                 // Failed to create a new timer
                 //
+								PLATFORM_PRINTF_DEBUG_ERROR("[PLATFORM] timer_create() returned with errno=%d (%s)\n", errno, strerror(errno));
                 free(p2);
                 return 0;
             }
