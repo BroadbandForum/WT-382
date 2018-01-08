@@ -1407,7 +1407,7 @@ extension:
 Each file has a particular purpose:
 - **\*_recv.c/h** process the incoming CMDU (and TLVs)
 - **\*_send.c/h** extend the outgoing CMDU with your new defined TLVs
-- **\*_tlv_forgind.c**, **\*_tlv_parsing.c** and **\*_tlv_test_vectors.c/h** implement 
+- **\*_tlv_forging.c**, **\*_tlv_parsing.c** and **\*_tlv_test_vectors.c/h** implement
   unit_tests to check your new defined TLVs
      
 Each protocol extension file must be placed inside an 'extension/\*'
