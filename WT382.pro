@@ -278,5 +278,6 @@ DISTFILES += \
     scripts/linux/arm_wrt1900acx/start_linksys.sh \
     scripts/linux/arm_wrt1900acx/topology_change.sh \
     scripts/linux/arm_wrt1900acx/wps \
-    scripts/README.md
+    scripts/README.md \
+    Makefile
 

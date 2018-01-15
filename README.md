@@ -1548,7 +1548,7 @@ functionality. This is a two steps process:
 
   Don't worry about these callbacks yet. We will dive into details in the next
   section.
-
+ 
   2. Enable your new functionality at compilation time.
 
      Besides registering your new funcionality in the source code, you must
