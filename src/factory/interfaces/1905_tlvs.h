@@ -95,43 +95,43 @@
 ////////////////////////////////////////////////////////////////////////////////
 // TLV types as detailed in Multi-AP specification "Section 17.2"
 ////////////////////////////////////////////////////////////////////////////////
-#define TLV_TYPE_SUPPORTED_SERVICE                   (128) // 0x80
-#define TLV_TYPE_SEARCHED_SERVICE                    (129) // 0x81
-#define TLV_TYPE_AP_RADIO_IDENTIFIER                 (130) // 0x82
-#define TLV_TYPE_AP_OPERATIONAL_BSS                  (131) // 0x83
-#define TLV_TYPE_ASSOCIATED_CLIENTS                  (132) // 0x84
-#define TLV_TYPE_AP_CAPABILITY                       (161) // 0xA1
-#define TLV_TYPE_AP_RADIO_BASIC_CAPABILITIES         (133) // 0x85
-#define TLV_TYPE_AP_HT_CAPABILITIES                  (134) // 0x86
-#define TLV_TYPE_AP_VHT_CAPABILITIES                 (135) // 0x87
-#define TLV_TYPE_AP_HE_CAPABILITIES                  (136) // 0x88
-#define TLV_TYPE_STEERING_POLICY                     (137) // 0x89
-#define TLV_TYPE_METRIC_REPORT_POLICY                (138) // 0x8A
-#define TLV_TYPE_CHANNEL_PREFERENCE                  (139) // 0x8B
-#define TLV_TYPE_RADIO_OPERATION_RESTRICTION         (140) // 0x8C
-#define TLV_TYPE_TRANSMIT_POWER_LIMIT                (141) // 0x8D
-#define TLV_TYPE_CHANNEL_SELECTION_RESPONSE          (142) // 0x8E
-#define TLV_TYPE_OPERATING_CHANNEL_REPORT            (143) // 0x8F
-#define TLV_TYPE_CLIENT_INFO                         (144) // 0x90
-#define TLV_TYPE_CLIENT_CAPABLITY_REPORT             (145) // 0x91
-#define TLV_TYPE_CLIENT_ASSOCIATION_EVENT            (146) // 0x92
-#define TLV_TYPE_AP_METRIC_QUERY                     (147) // 0x93
-#define TLV_TYPE_AP_METRICS                          (148) // 0x94
-#define TLV_TYPE_STA_MAC_ADDRESS_TYPE                (149) // 0x95
-#define TLV_TYPE_ASSOCIATED_STA_LINK_METRICS         (150) // 0x96
-#define TLV_TYPE_UNASSOCIATED_STA_LINK_METRICS_QUERY (151) // 0x97
-#define TLV_TYPE_UNASSOCIATED_STA_LINK_METRICS_REPORT(152) // 0x98
-#define TLV_TYPE_BEACON_METRICS_QUERY                (153) // 0x99
-#define TLV_TYPE_BEACON_METRICS_RESPONSE             (154) // 0x9A
-#define TLV_TYPE_STEERING_REQUEST                    (155) // 0x9B
-#define TLV_TYPE_STEERING_BTM_REPORT                 (156) // 0x9C
-#define TLV_TYPE_CLIENT_ASSOCIATION_CONTROL_REQUEST  (157) // 0x9D
-#define TLV_TYPE_BACKHAUL_STEERING_REQUEST           (158) // 0x9E
-#define TLV_TYPE_BACKHAUL_STEERING_RESPONSE          (159) // 0x9F
-#define TLV_TYPE_HIGHER_LAYER_DATA                   (160) // 0xA0
-#define TLV_TYPE_ASSOCIATED_STA_TRAFFIC_STATS        (162) // 0xA2
+#define TLV_TYPE_SUPPORTED_SERVICE                    (128) // 0x80
+#define TLV_TYPE_SEARCHED_SERVICE                     (129) // 0x81
+#define TLV_TYPE_AP_RADIO_IDENTIFIER                  (130) // 0x82
+#define TLV_TYPE_AP_OPERATIONAL_BSS                   (131) // 0x83
+#define TLV_TYPE_ASSOCIATED_CLIENTS                   (132) // 0x84
+#define TLV_TYPE_AP_CAPABILITY                        (161) // 0xA1
+#define TLV_TYPE_AP_RADIO_BASIC_CAPABILITIES          (133) // 0x85
+#define TLV_TYPE_AP_HT_CAPABILITIES                   (134) // 0x86
+#define TLV_TYPE_AP_VHT_CAPABILITIES                  (135) // 0x87
+#define TLV_TYPE_AP_HE_CAPABILITIES                   (136) // 0x88
+#define TLV_TYPE_STEERING_POLICY                      (137) // 0x89
+#define TLV_TYPE_METRIC_REPORT_POLICY                 (138) // 0x8A
+#define TLV_TYPE_CHANNEL_PREFERENCE                   (139) // 0x8B
+#define TLV_TYPE_RADIO_OPERATION_RESTRICTION          (140) // 0x8C
+#define TLV_TYPE_TRANSMIT_POWER_LIMIT                 (141) // 0x8D
+#define TLV_TYPE_CHANNEL_SELECTION_RESPONSE           (142) // 0x8E
+#define TLV_TYPE_OPERATING_CHANNEL_REPORT             (143) // 0x8F
+#define TLV_TYPE_CLIENT_INFO                          (144) // 0x90
+#define TLV_TYPE_CLIENT_CAPABLITY_REPORT              (145) // 0x91
+#define TLV_TYPE_CLIENT_ASSOCIATION_EVENT             (146) // 0x92
+#define TLV_TYPE_AP_METRIC_QUERY                      (147) // 0x93
+#define TLV_TYPE_AP_METRICS                           (148) // 0x94
+#define TLV_TYPE_STA_MAC_ADDRESS_TYPE                 (149) // 0x95
+#define TLV_TYPE_ASSOCIATED_STA_LINK_METRICS          (150) // 0x96
+#define TLV_TYPE_UNASSOCIATED_STA_LINK_METRICS_QUERY  (151) // 0x97
+#define TLV_TYPE_UNASSOCIATED_STA_LINK_METRICS_REPORT (152) // 0x98
+#define TLV_TYPE_BEACON_METRICS_QUERY                 (153) // 0x99
+#define TLV_TYPE_BEACON_METRICS_RESPONSE              (154) // 0x9A
+#define TLV_TYPE_STEERING_REQUEST                     (155) // 0x9B
+#define TLV_TYPE_STEERING_BTM_REPORT                  (156) // 0x9C
+#define TLV_TYPE_CLIENT_ASSOCIATION_CONTROL_REQUEST   (157) // 0x9D
+#define TLV_TYPE_BACKHAUL_STEERING_REQUEST            (158) // 0x9E
+#define TLV_TYPE_BACKHAUL_STEERING_RESPONSE           (159) // 0x9F
+#define TLV_TYPE_HIGHER_LAYER_DATA                    (160) // 0xA0
+#define TLV_TYPE_ASSOCIATED_STA_TRAFFIC_STATS         (162) // 0xA2
 
-#define TLV_TYPE_LAST                                (162)
+#define TLV_TYPE_LAST                                 (162)
                                                      // NOTE: If new types are
                                                      // introduced in future
                                                      // revisions of the
