@@ -72,6 +72,7 @@ ifeq ($(PLATFORM),linux)
        #CC        := clang
 
         CCFLAGS   := -D_FLAVOUR_X86_GENERIC_
+				CCFLAGS   := -D_HOST_IS_LITTLE_ENDIAN_=1
 
         LDFLAGS       += -lrt -lpthread   # For threads
         LDFLAGS       += -lpcap           # For packet capture
@@ -112,6 +113,8 @@ ifeq ($(PLATFORM),linux)
         AR        := $(CROSS_COMPILE)ar
         
         CCFLAGS   += -D_FLAVOUR_MIPS_
+				CCFLAGS   += -D_HOST_IS_BIG_ENDIAN_=1
+
         CCFLAGS   += -I$(shell pwd)/../libpcap/libpcap-1.8.1/
         CCFLAGS   += -I$(shell pwd)/../openssl-1.0.2d/include/
 
@@ -128,7 +131,7 @@ ifeq ($(PLATFORM),linux)
     endif
 
     CCFLAGS       += -g -O0 -Wall #-Wextra
-    CCFLAGS       += -D_HOST_IS_LITTLE_ENDIAN_=1 -DMAX_NETWORK_SEGMENT_SIZE=1500
+		CCFLAGS       += -DMAX_NETWORK_SEGMENT_SIZE=1500
     CCFLAGS       += -DINT8U="unsigned char"
     CCFLAGS       += -DINT16U="unsigned short int"
     CCFLAGS       += -DINT32U="unsigned int"
