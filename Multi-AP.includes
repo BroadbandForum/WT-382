@@ -1,0 +1,10 @@
+src/al/internal_interfaces
+src/al/src_independent
+src/al/src_independent/extensions/bbf
+src/al/src_linux
+src/common/interfaces
+src/factory/interfaces
+src/factory/interfaces/extensions/bbf
+src/factory/unit_tests
+src/factory/unit_tests/extensions/bbf
+.
