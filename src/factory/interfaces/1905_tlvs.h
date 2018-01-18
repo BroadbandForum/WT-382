@@ -92,6 +92,16 @@
 #define TLV_TYPE_INTERFACE_POWER_CHANGE_STATUS       (29)
 #define TLV_TYPE_L2_NEIGHBOR_DEVICE                  (30)
 
+#define TLV_TYPE_LAST                                (30)
+                                                     // NOTE: If new types are
+                                                     // introduced in future
+                                                     // revisions of the
+                                                     // standard, update this
+                                                     // value so that it always
+                                                     // points to the last one.
+
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // TLV types as detailed in Multi-AP specification "Section 17.2"
 ////////////////////////////////////////////////////////////////////////////////
@@ -130,15 +140,6 @@
 #define TLV_TYPE_BACKHAUL_STEERING_RESPONSE           (159) // 0x9F
 #define TLV_TYPE_HIGHER_LAYER_DATA                    (160) // 0xA0
 #define TLV_TYPE_ASSOCIATED_STA_TRAFFIC_STATS         (162) // 0xA2
-
-#define TLV_TYPE_LAST                                 (162)
-                                                     // NOTE: If new types are
-                                                     // introduced in future
-                                                     // revisions of the
-                                                     // standard, update this
-                                                     // value so that it always
-                                                     // points to the last one.
-
 
 
 ////////////////////////////////////////////////////////////////////////////////
