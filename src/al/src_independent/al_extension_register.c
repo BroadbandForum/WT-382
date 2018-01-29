@@ -176,6 +176,12 @@
 #  include "bbf_recv.h"  // CBKprocess1905BBFExtensions
 #endif
 
+#ifdef REGISTER_EXTENSION_MULTI_AP
+// Multi AP extensions
+#include "multi_ap_send.h"  // CBKSend1905_Multi_AP_Extensions, CBKObtain_Multi_AP_ExtendedLocalInfo,
+                         // CBKUpdate_Multi_AP_ExtendedInfo, CBKDump_Multi_AP_ExtendedInfo
+#include "multi_ap_recv.h"  // CBKprocess1905_Multi_AP_Extensions
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 // Public function (extensions entry point).
@@ -202,7 +208,25 @@ INT8U start1905ALExtensions(void)
         return 0;
     }
 #endif
+#ifdef REGISTER_EXTENSION_MULTI_AP
+// Multi AP extensions
 
+    PLATFORM_PRINTF_DEBUG_DETAIL("Registering Multi AP protocol extensions...\n");
+    if (0 == register1905CmduExtension("Multi_AP", CBKprocess1905_Multi_AP_Extensions, CBKSend1905_Multi_AP_Extensions))
+    {
+        PLATFORM_PRINTF_DEBUG_ERROR("Could not register Multi AP protocol extension\n");
+        return 0;
+    }
+
+    if (0 == register1905AlmeDumpExtension("Multi_AP",
+                                           CBKObtain_Multi_AP_ExtendedLocalInfo,
+                                           CBKUpdate_Multi_AP_ExtendedInfo,
+                                           CBKDump_Multi_AP_ExtendedInfo))
+    {
+        PLATFORM_PRINTF_DEBUG_ERROR("Could not register Multi AP datamodel protocol extension\n");
+        return 0;
+    }
+#endif
     // Feel free to add more 1905 protocol extensions
     //
     // ...

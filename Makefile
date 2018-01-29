@@ -61,7 +61,7 @@ PLATFORM := linux
  #FLAVOUR  := x86_generic
  #FLAVOUR  := arm_wrt1900acx
  #FLAVOUR  := x86_windows_mingw
- FLAVOUR  := mips
+ FLAVOUR  := mips_big_endian
 
 endif
 
@@ -107,7 +107,7 @@ ifeq ($(PLATFORM),linux)
 
         AL_SUPPORTED  := no
         HLE_SUPPORTED := yes
-    else ifeq ($(FLAVOUR), mips)
+		else ifeq ($(FLAVOUR), mips_big_endian)
         CC        := $(CROSS_COMPILE)gcc
         LD        := $(CROSS_COMPILE)ld
         AR        := $(CROSS_COMPILE)ar
@@ -159,6 +159,9 @@ CCFLAGS += -D_BUILD_NUMBER_=\"$(shell cat version.txt)\"
 CCFLAGS += -DREGISTER_EXTENSION_BBF
   #
   # These are special flags to enable Protocol extensions
+# enable flags for extention Multi AP specification
+CCFLAGS += -DREGISTER_EXTENSION_MULTI_AP
+
 
 ################################################################################
 # End of configuration section. Do not touch anything from this point on

@@ -8,3 +8,7 @@ src/factory/interfaces/extensions/bbf
 src/factory/unit_tests
 src/factory/unit_tests/extensions/bbf
 .
+src/factory/interfaces/extensions/multi_ap
+src/factory/src_independent/extensions/multi_ap
+src/al/src_independent/extensions/multi_ap
+src/factory/unit_tests/extensions/multi_ap
