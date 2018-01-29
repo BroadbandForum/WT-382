@@ -645,7 +645,7 @@ of:
 
   1. The **"virtual push button" trigger** is a file named
      **"/tmp/virtual_push_button"**. Whenever you "touch" this file (ex:
-     ```touch /tmp/virtual_push_button```), the AL entity will act as if the
+     `touch /tmp/virtual_push_button`), the AL entity will act as if the
      physical button that starts the "push button configuration method" had been
      pressed.
      The code for each Linux flavour also includes the "glue" needed to start
@@ -654,7 +654,7 @@ of:
 
   2. The **"topology change notification" trigger** is a file named
      **"/tmp/topology_change"**. Whenever you "touch" this file (ex:
-     ```touch /tmp/topology_change```), the AL entity will act as if a real
+     `touch /tmp/topology_change`), the AL entity will act as if a real
      topology change had been detected.
      Right now this is the only way to "detect" topology changes (i.e. you must
      "manually" force them). In the future the code will listen to both changes
@@ -1407,7 +1407,7 @@ extension:
 Each file has a particular purpose:
 - **\*_recv.c/h** process the incoming CMDU (and TLVs)
 - **\*_send.c/h** extend the outgoing CMDU with your new defined TLVs
-- **\*_tlv_forgind.c**, **\*_tlv_parsing.c** and **\*_tlv_test_vectors.c/h** implement 
+- **\*_tlv_forging.c**, **\*_tlv_parsing.c** and **\*_tlv_test_vectors.c/h** implement
   unit_tests to check your new defined TLVs
      
 Each protocol extension file must be placed inside an 'extension/\*'
@@ -1548,7 +1548,7 @@ functionality. This is a two steps process:
 
   Don't worry about these callbacks yet. We will dive into details in the next
   section.
-
+ 
   2. Enable your new functionality at compilation time.
 
      Besides registering your new funcionality in the source code, you must
@@ -2041,6 +2041,8 @@ like to automate them.
 
        $ al_entity -m aa:aa:aa:aa:aa:00 -i eth1:simulated:interface.eth1.sim,eth0:simulated:interface.eth0.sim -v
      ```
+		 notes: Make sure the attr.mq_maxmsg is less than /proc/sys/fs/mqueue/msg_max or using root to run above command.
+		 
   2. Wait a few seconds, open a new terminal and execute this:
      ```
 

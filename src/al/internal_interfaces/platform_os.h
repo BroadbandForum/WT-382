@@ -83,7 +83,7 @@ struct deviceInfo
 
 };
 
-// Return a "struct deviceInfo" or NULL if there wa san error
+// Return a "struct deviceInfo" or NULL if there was an error
 //
 // The returned pointer must not be freed.
 //
