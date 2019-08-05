@@ -405,7 +405,7 @@ CMDUs, i.e. "control" commands can only be delivered from an HLE to an AL.
 So far, so good.
 
 However the "1a" update to the standard came next and it introduced a new TLV
-that contains a control command to switch on an off interfaces on a remote
+that contains a control command to switch on and off interfaces on a remote
 host.
 
 This may be **problematic**: in effect this gives *any* node power to switch
@@ -421,7 +421,7 @@ network.
 
 But the introduction of this new "control" CMDU is **even more
 incomprehensible** when you consider that the original 1905 *already* contained
-and ALME message to change an interface power mode. The HLE just needed to
+an ALME message to change an interface power mode. The HLE just needed to
 make use of this to directly send the desired command to a remote AL.
 
 Because of all of this I really feel these control CMDUs (and all others that
