@@ -1870,9 +1870,9 @@ should probably use it as often as possible.
 
 This other tool, on the other hand, requires some more work and should probably
 only be added at some later point of your workflow.
-*However*, please *do use it* (specially to detect memory leaks).
+*However*, please *do use it* (especially to detect memory leaks).
 
-To you it, execute your binary like this:
+To use it, execute your binary like this:
 ```
     valgrind --log-file=val_%p.txt --time-stamp=yes --gen-suppressions=all --tool=memcheck --track-origins=yes --leak-check=full <binary_under_test>
 ```
